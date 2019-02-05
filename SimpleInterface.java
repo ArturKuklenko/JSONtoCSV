@@ -73,7 +73,7 @@ public class SimpleInterface implements ActionListener {
 		JButton theButton = (JButton) e.getSource();
 		if(theButton==browse1){
 		fileopen = new JFileChooser();
-		fileopen.setCurrentDirectory(new File("C:/"));
+		fileopen.setCurrentDirectory(new File("C:/users"));
 		int ret = fileopen.showDialog(null, "Open File");
 		if (ret == JFileChooser.APPROVE_OPTION) {
 		    File file = fileopen.getSelectedFile();
@@ -84,7 +84,7 @@ public class SimpleInterface implements ActionListener {
 		}
 		if(theButton==browse2){
 			fileopen = new JFileChooser();
-			fileopen.setCurrentDirectory(new File("C:/"));
+			fileopen.setCurrentDirectory(new File("C:/users"));
 			int ret = fileopen.showDialog(null, "Open File");
 			if (ret == JFileChooser.APPROVE_OPTION) {
 			    File file = fileopen.getSelectedFile();
