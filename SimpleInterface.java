@@ -1,7 +1,6 @@
 package new5;
 import java.awt.event.*;
 import java.io.*;
-import java.util.List;
 
 import javax.swing.*;
 public class SimpleInterface implements ActionListener {
@@ -114,14 +113,7 @@ public class SimpleInterface implements ActionListener {
             	Main.execute(jsonFilePath.getText(), csvFilePath.getText());
                 return true;
             }
-            @Override
-            protected void process(List<Integer> chunks) {
 
-            }
-            @Override
-            protected void done() {
-
-            }
         };
     }
 }
