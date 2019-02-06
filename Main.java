@@ -3,7 +3,6 @@ package new5;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import New.SimpleInterface;
-import New2.SimpleInterfaceFX;
 import javafx.application.Application;
 
 import java.io.BufferedReader;
@@ -27,6 +26,7 @@ public static void main(String[] args) throws IOException {
  * now the User Interface starts to execute it after button convert was cliked
  * */
 public static void execute(String JSONpath, String CSVpath) {
+	SimpleInterface.status.setText("Conversion running...");
 	// Open the file
 	FileInputStream fileInputStream = new FileInputStream(JSONpath);
 	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
@@ -111,5 +111,6 @@ public static void execute(String JSONpath, String CSVpath) {
 	printwrite.write(rowbuilder.toString());
 	printwrite.close();
 	System.out.println("DONE!");
+	SimpleInterface.status.setText("Conversion done.");
 }
 }

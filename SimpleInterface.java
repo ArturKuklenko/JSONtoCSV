@@ -1,6 +1,8 @@
 package new5;
 import java.awt.event.*;
 import java.io.*;
+import java.util.List;
+
 import javax.swing.*;
 public class SimpleInterface implements ActionListener {
 	JPanel panel;
@@ -12,6 +14,7 @@ public class SimpleInterface implements ActionListener {
 	JTextField csvFilePath;
 	JLabel JSONpath;
 	JLabel CSVpath;
+	public static JLabel status;
 	JFileChooser fileopen;
 	/*
 	 * Above All components we needed, all from Java Swing library
@@ -33,10 +36,12 @@ public class SimpleInterface implements ActionListener {
 
 		JSONpath = new JLabel("JSON file path:");
 		CSVpath = new JLabel("CSV file path:");
+		status = new JLabel("");
 		
 
 		JSONpath.setBounds(10,20,150,20);
 		CSVpath.setBounds(10,80,80,20);
+		status.setBounds(100,140,200,20);
 		jsonFilePath.setBounds(100,20,200,20);
 		csvFilePath.setBounds(100,80,200,20);
 		browse1.setBounds(305,20,100,20);
@@ -53,6 +58,7 @@ public class SimpleInterface implements ActionListener {
 		panel.add(browse2);
 		panel.add(JSONpath);
 		panel.add(CSVpath);
+		panel.add(status);
 		panel.add(jsonFilePath);
 		panel.add(csvFilePath);
 
@@ -94,9 +100,28 @@ public class SimpleInterface implements ActionListener {
 		}
 		}
 		if(theButton==convert){
-			Main.execute(jsonFilePath.getText(), csvFilePath.getText());
+			@SuppressWarnings("rawtypes")
+			SwingWorker work = this.createWorker();
+			work.execute();
 		}
 		
 	}
+    @SuppressWarnings("rawtypes")
+	public SwingWorker createWorker() {
+        return new SwingWorker<Boolean, Integer>() {
+            @Override
+            protected Boolean doInBackground() throws Exception {
+            	Main.execute(jsonFilePath.getText(), csvFilePath.getText());
+                return true;
+            }
+            @Override
+            protected void process(List<Integer> chunks) {
 
+            }
+            @Override
+            protected void done() {
+
+            }
+        };
+    }
 }
