@@ -15,6 +15,8 @@ public class SimpleInterface implements ActionListener {
 	JLabel CSVpath;
 	public static JLabel status;
 	JFileChooser fileopen;
+	public String folderJSONPath = "C:/users";
+	public String folderCSVPath = "C:/users";
 	/*
 	 * Above All components we needed, all from Java Swing library
 	 * Below constructor, it create User Interface
@@ -78,10 +80,11 @@ public class SimpleInterface implements ActionListener {
 		JButton theButton = (JButton) e.getSource();
 		if(theButton==browse1){
 		fileopen = new JFileChooser();
-		fileopen.setCurrentDirectory(new File("C:/users"));
+		fileopen.setCurrentDirectory(new File(folderJSONPath));
 		int ret = fileopen.showDialog(null, "Open File");
 		if (ret == JFileChooser.APPROVE_OPTION) {
 		    File file = fileopen.getSelectedFile();
+		    folderJSONPath = file.getParent();
 		    String tmp = file.getParent()+"\\"+file.getName();
 		    String tmp_2 = tmp.replace("\\","/");
 		    jsonFilePath.setText(tmp_2);
@@ -89,10 +92,11 @@ public class SimpleInterface implements ActionListener {
 		}
 		if(theButton==browse2){
 			fileopen = new JFileChooser();
-			fileopen.setCurrentDirectory(new File("C:/users"));
+			fileopen.setCurrentDirectory(new File(folderCSVPath));
 			int ret = fileopen.showDialog(null, "Open File");
 			if (ret == JFileChooser.APPROVE_OPTION) {
 			    File file = fileopen.getSelectedFile();
+			    folderCSVPath = file.getParent();
 			    String tmp = file.getParent()+"\\"+file.getName();
 			    String tmp_3 = tmp.replace("\\","/");
 			    csvFilePath.setText(tmp_3);
